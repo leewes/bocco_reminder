@@ -1,0 +1,24 @@
+{
+  "name": "bocco_reminder",
+  "version": "1.0.0",
+  "description": "A reminder app for bocco",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leewes5928/bocco_reminder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leewes5928/bocco_reminder/issues"
+  },
+  "homepage": "https://github.com/leewes5928/bocco_reminder#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2"
+  }
+}
