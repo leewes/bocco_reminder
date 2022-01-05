@@ -102,9 +102,9 @@ async function sendMessage(){
 app.post("/api/hook", (req, res) => {
     const message = req.data.message.message.ja;
     const type = req.data.message.media;
-    if (type === "audio" && message.includes("宿題") && message.includes("終わった")) {
+//    if (type === "audio" && message.includes("宿題") && message.includes("終わった")) {
         sendMessage();
-    }
+  
 })
 
 
