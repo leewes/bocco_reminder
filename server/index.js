@@ -99,17 +99,16 @@ async function sendMessage(){
 }
 
 app.post("/api/hook", (req, res) => {
-  // if(req.data.message){
-  //   const message = req.data.message.message.ja;
-  //   const type = req.data.message.media;
-  //   console.log(message)
-  //   console.log("👧宿題あるかないか", message.includes("宿題"))
+  if(req.body.data.message){
+    const message = req.body.data.message.message.ja;
+    const type = req.body.data.message.media;
+    console.log(message)
+    console.log("👧宿題あるかないか", message.includes("宿題"))
   //  if (type === "audio" && message.includes("宿題") && message.includes("終わった")) {
-  //       sendMessage();
-  //   }
-  // }
-  console.log("🤖🤖🤖🤖🤖🤖🤖🤖req:", req.body.data);
-  console.log("res: ", res.body.data)
+   if (message.includes("宿題") && message.includes("終わった")) {
+        sendMessage();
+    }
+  }
 })
 
 
