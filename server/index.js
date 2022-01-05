@@ -78,7 +78,6 @@ async function setupWebhookEvent () {
       "Content-Type" : "application/json"
     },
   });
-
   console.log("🤖setupWebhookEvent res :", res.data)
 }
 
@@ -109,7 +108,8 @@ app.post("/api/hook", (req, res) => {
   //       sendMessage();
   //   }
   // }
-  console.log("🤖🤖🤖🤖🤖🤖🤖🤖req:", req.data);
+  console.log("🤖🤖🤖🤖🤖🤖🤖🤖req:", req);
+  console.log("res: ", res)
 })
 
 
