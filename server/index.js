@@ -108,8 +108,8 @@ app.post("/api/hook", (req, res) => {
   //       sendMessage();
   //   }
   // }
-  console.log("🤖🤖🤖🤖🤖🤖🤖🤖req:", req.data);
-  console.log("res: ", res.data)
+  console.log("🤖🤖🤖🤖🤖🤖🤖🤖req:", req.body.data);
+  console.log("res: ", res.body.data)
 })
 
 
