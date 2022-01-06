@@ -165,7 +165,7 @@ Project Link: [https://github.com/leewes5928/bocco_reminder](https://github.com/
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [BOCCO emo Platform API](https://choosealicense.com/)
+* [BOCCO emo Platform API](https://platform-api.bocco.me/)
 * [Bored API](http://www.boredapi.com/)
 * [Advice Slip JSON API](https://api.adviceslip.com/)
 * [Translate Google](https://github.com/shikar/NODE_GOOGLE_TRANSLATE/)
