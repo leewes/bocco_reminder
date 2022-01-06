@@ -3,6 +3,7 @@ const axios = require("axios");
 const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT || 5000;
+const translate = require('translate-google');
 
 let accessToken;
 let roomUuid;
@@ -129,8 +130,37 @@ app.post("/api/hook", (req, res) => {
       }
     }
   }
+  next()
   res.status(200).send("Webhook Received");
 });
+
+app.post("/api/hook", async (req, res) => {
+  if (req.body.data.message) {
+    const message = req.body.data.message.message.ja;
+    const type = req.body.data.message.media;
+
+    if (
+      type === "audio" && (
+      message.includes("つまらない") || 
+      message.includes("つまんない") ||
+      message.includes("暇") || 
+      message.includes("退屈")
+      )
+    ) {
+      const boredContent = await axios.get("http://www.boredapi.com/api/activity?price=0.0&type=relaxation&type=recreational");
+      const activity = boredContent.data.activity
+      console.log(boredContent.data.type
+        )
+
+      // Let's transrate!!
+      
+      const activityOfJa = await translate(`Let's ${activity}`, {to: 'ja'})
+      console.log(activity)
+      sendMessage(`${activityOfJa}`)
+    }
+  }
+  res.status(200).send("Webhook Recieved");
+})
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
