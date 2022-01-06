@@ -94,13 +94,13 @@ setupWebhookEvent();
 
 app.use(express.json());
 
-async function sendMessage() {
+async function sendMessage(message) {
   await getRoomUuid();
 
   await axios.post(
     `https://platform-api.bocco.me/v1/rooms/${roomUuid}/messages/text`,
     {
-      text: "おめでとう",
+      text: message,
     },
     {
       headers: {
@@ -120,10 +120,11 @@ app.post("/api/hook", (req, res) => {
       message.includes("宿題") &&
       message.includes("終わった")
     ) {
-      sendMessage();
+      sendMessage("お疲れ様！");
     }
   }
 });
+
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
