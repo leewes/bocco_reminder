@@ -151,15 +151,9 @@ app.post("/api/hook", async (req, res) => {
     ) {
       const boredContent = await axios.get("http://www.boredapi.com/api/activity?price=0.0");
       const activity = boredContent.data.activity
-      console.log(activity)
+      console.log(boredContent.data.type)
 
       // Let's transrate!!
-      // const tranObj = {
-      //   a: 1,
-      //   b: '1',
-      //   c: "How are you?\nI'm nice.",
-      //   d: [true, 'true', 'hi', { a: 'hello', b: ['world']}],
-      // }
       
       const activityOfJa = await translate(`Let's ${activity}`, {to: 'ja'})
       console.log(activityOfJa)
