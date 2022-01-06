@@ -134,7 +134,7 @@ app.post("/api/hook", (req, res, next) => {
   res.status(200).send("Webhook Received");
 });
 
-app.post("/api/hook", async (req, res) => {
+app.post("/api/hook", async (req, res, next) => {
   if (req.body.data.message) {
     const message = req.body.data.message.message.ja;
     const type = req.body.data.message.media;
@@ -159,8 +159,25 @@ app.post("/api/hook", async (req, res) => {
       sendMessage(`${activityOfJa}`)
     }
   }
-  res.status(200).send("Webhook Received");
+  next()
 })
+
+app.post("/api/hook", async (req, res) => {
+  if (req.body.data.message) {
+    const message = req.body.data.message.message.ja;
+    const type = req.body.data.message.media;
+
+    if (type === "audio" && message.includes("アドバイス")) {
+      const adviceContent = await axios.get("https://api.adviceslip.com/advice");
+      const advice = adviceContent.data.slip.advice;
+      console.log(advice)      
+      const adviceOfJa = await translate(advice, {to: 'ja'})
+      console.log(adviceOfJa)
+      sendMessage(`${adviceOfJa}`)
+    }
+  }
+})
+
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
