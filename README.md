@@ -43,7 +43,7 @@
         <li><a href="#prerequisites">Prerequisites</a>
         <li><a href="#installation">Installation</a></li>
         <li><a href="#deployment">Deployment</a></li>
-        <li><a href="usage">
+        <li><a href="#usage">Usage</a>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
