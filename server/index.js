@@ -48,8 +48,6 @@ async function getMessage() {
   }
 }
 
-getMessage();
-
 async function setupWebhookUrl() {
   await getAccessToken();
 
@@ -94,13 +92,13 @@ setupWebhookEvent();
 
 app.use(express.json());
 
-async function sendMessage() {
+async function sendMessage(message) {
   await getRoomUuid();
 
   await axios.post(
     `https://platform-api.bocco.me/v1/rooms/${roomUuid}/messages/text`,
     {
-      text: "おめでとう",
+      text: message,
     },
     {
       headers: {
@@ -115,14 +113,23 @@ app.post("/api/hook", (req, res) => {
   if (req.body.data.message) {
     const message = req.body.data.message.message.ja;
     const type = req.body.data.message.media;
+    let timestamp = req.body.timestamp;
+    timestamp = new Date(timestamp * 1000 + (9 * 60 * 60 * 1000));
+    timestamp = timestamp.getHours();
     if (
       type === "audio" &&
       message.includes("宿題") &&
       message.includes("終わった")
     ) {
-      sendMessage();
+
+      if(timestamp <= 11) {
+        sendMessage("すごい！早いね！お疲れ様");
+      } else {
+        sendMessage("ゆっくり休んでね");
+      }
     }
   }
+  res.status(200).send("Webhook Received");
 });
 
 app.listen(PORT, () => {
