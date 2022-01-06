@@ -3,7 +3,7 @@ const axios = require("axios");
 const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT || 5000;
-const translate = require('translate-google');
+const translate = require('rita-deepl-translate-api');
 
 let accessToken;
 let roomUuid;
@@ -158,7 +158,7 @@ app.post("/api/hook", async (req, res, next) => {
       
       const activityOfJa = await translate(`Let's ${activity}`, {to: 'ja'})
       console.log(activity)
-      sendMessage(`${activityOfJa}`)
+      sendMessage(`${activityOfJa.text}`)
     }
   }
   next()
@@ -175,10 +175,9 @@ app.post("/api/hook", async (req, res) => {
       console.log(advice)      
       const adviceOfJa = await translate(advice, {to: 'ja'})
       console.log(adviceOfJa)
-      sendMessage(`${adviceOfJa}`)
+      sendMessage(`${adviceOfJa.text}`)
     }
   }
-  res.status(200);
 })
 
 
