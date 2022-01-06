@@ -123,8 +123,13 @@ app.post("/api/hook", (req, res) => {
       message.includes("宿題") &&
       message.includes("終わった")
     ) {
-      console.log("req body timestamp", timestamp)
-      sendMessage(`${timestamp}時です`);
+
+      if(timestamp <= 11) {
+        sendMessage("すごい！早いね！お疲れ様");
+      } else {
+        sendMessage("ゆっくり休んでね");
+      }
+      // sendMessage(`${timestamp}時です`);
     }
   }
 });
