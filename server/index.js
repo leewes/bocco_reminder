@@ -137,7 +137,9 @@ app.post("/api/hook", (req, res, next) => {
 
 app.post("/api/hook", async (req, res) => {
 const boredContent = await axios.get("http://www.boredapi.com/api/activity?price=0.0");
-console.log(boredContent)
+const activity = boredContent.data.activity
+console.log(activity)
+sendMessage(`${activity}`)
 })
 
 
