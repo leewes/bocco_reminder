@@ -123,7 +123,7 @@ app.post("/api/hook", (req, res, next) => {
       message.includes("終わった")
     ) {
 
-      if(timestamp <= 11) {
+      if(timestamp <= 17) {
         sendMessage("すごい！早いね！お疲れ様");
       } else {
         sendMessage("ゆっくり休んでね");
