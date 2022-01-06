@@ -110,7 +110,7 @@ async function sendMessage(message) {
   );
 }
 
-app.post("/api/hook", (req, res) => {
+app.post("/api/hook", (req, res, next) => {
   if (req.body.data.message) {
     const message = req.body.data.message.message.ja;
     const type = req.body.data.message.media;
@@ -159,7 +159,7 @@ app.post("/api/hook", async (req, res) => {
       sendMessage(`${activityOfJa}`)
     }
   }
-  res.status(200).send("Webhook Recieved");
+  res.status(200).send("Webhook Received");
 })
 
 app.listen(PORT, () => {
