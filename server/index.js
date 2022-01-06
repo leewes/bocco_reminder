@@ -149,9 +149,10 @@ app.post("/api/hook", async (req, res) => {
       message.includes("退屈")
       )
     ) {
-      const boredContent = await axios.get("http://www.boredapi.com/api/activity?price=0.0");
+      const boredContent = await axios.get("http://www.boredapi.com/api/activity?price=0.0&type=relaxation&type=recreational");
       const activity = boredContent.data.activity
-      console.log(boredContent.data.type)
+      console.log(boredContent.data.type
+        )
 
       // Let's transrate!!
       
