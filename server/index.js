@@ -133,10 +133,10 @@ app.post("/api/hook", (req, res, next) => {
     }
   }
   next()
-  res.status(200);
+  res.status(200).send("Recieved");
 });
 
-app.post("/api/hook", async (req, res) => {
+app.post("/api/hook", async (req, res, next) => {
   if (req.body.data.message) {
     const message = req.body.data.message.message.ja;
     const type = req.body.data.message.media;
@@ -159,6 +159,25 @@ app.post("/api/hook", async (req, res) => {
       const activityOfJa = await translate(`Let's ${activity}`, {to: 'ja'})
       console.log(activity)
       sendMessage(`${activityOfJa}`)
+    }
+  }
+  next()
+})
+
+app.post("/api/hook", async (req, res) => {
+  if (req.body.data.message) {
+    const message = req.body.data.message.message.ja;
+    const type = req.body.data.message.media;
+
+    if (type === "audio" && message.includes("アドバイス")) {
+      const adviceContent = await axios.get("https://api.adviceslip.com/advice");
+      const advice = adviceContent;
+      console.log(advice)
+
+      
+      // const activityOfJa = await translate(`Let's ${activity}`, {to: 'ja'})
+      // console.log(activity)
+      // sendMessage(`${activityOfJa}`)
     }
   }
   res.status(200);
