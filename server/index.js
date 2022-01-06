@@ -116,7 +116,7 @@ app.post("/api/hook", (req, res) => {
     const message = req.body.data.message.message.ja;
     const type = req.body.data.message.media;
     let timestamp = req.body.timestamp;
-    timestamp = new Date(timestamp * 1000);
+    timestamp = new Date(timestamp * 1000 + (9 * 60 * 60 * 1000));
     // timestamp = timestamp.getHours();
     if (
       type === "audio" &&
