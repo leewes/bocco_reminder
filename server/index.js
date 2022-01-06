@@ -115,13 +115,16 @@ app.post("/api/hook", (req, res) => {
   if (req.body.data.message) {
     const message = req.body.data.message.message.ja;
     const type = req.body.data.message.media;
+    let timestamp = req.body.timestamp;
+    timestamp = new Date(timestamp * 1000);
+    timestamp = timestamp.getHours();
     if (
       type === "audio" &&
       message.includes("宿題") &&
       message.includes("終わった")
     ) {
-      console.log("req body timestamp", req.body.timestamp)
-      sendMessage(`${req.body.timestamp}`);
+      console.log("req body timestamp", timestamp)
+      sendMessage(`${timestamp}時です`);
     }
   }
 });
