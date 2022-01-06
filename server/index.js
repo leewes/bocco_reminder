@@ -3,6 +3,7 @@ const axios = require("axios");
 const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT || 5000;
+const translate = require('translate-google');
 
 let accessToken;
 let roomUuid;
@@ -141,15 +142,36 @@ app.post("/api/hook", async (req, res) => {
     const type = req.body.data.message.media;
 
     if (
-      type === "audio" &&
-      message.includes("つまらない") || message.includes("暇") ||  message.includes("退屈")
+      type === "audio" && (
+      message.includes("つまらない") || 
+      message.includes("つまんない") ||
+      message.includes("暇") || 
+      message.includes("退屈")
+      )
     ) {
       const boredContent = await axios.get("http://www.boredapi.com/api/activity?price=0.0");
       const activity = boredContent.data.activity
       console.log(activity)
+
+      // Let's transrate!!
+      // const tranObj = {
+      //   a: 1,
+      //   b: '1',
+      //   c: "How are you?\nI'm nice.",
+      //   d: [true, 'true', 'hi', { a: 'hello', b: ['world']}],
+      // }
+      
+      const activityOfJa = await translate(activity, {to: 'ja'})
+      console.log(activityOfJa)
+  
+
+
+
+
       sendMessage(`${activity}`)
     }
   }
+  res.status(200);
 })
 
 
