@@ -137,6 +137,9 @@ app.post("/api/hook", (req, res, next) => {
 
 app.post("/api/hook", async (req, res) => {
   if (req.body.data.message) {
+    const message = req.body.data.message.message.ja;
+    const type = req.body.data.message.media;
+
     if (
       type === "audio" &&
       message.includes("つまらない") || message.includes("暇") ||  message.includes("退屈")
