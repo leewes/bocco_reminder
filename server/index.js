@@ -157,7 +157,7 @@ app.post("/api/hook", async (req, res) => {
       // Let's transrate!!
       
       const activityOfJa = await translate(`Let's ${activity}`, {to: 'ja'})
-      console.log(activityOfJa)
+      console.log(activity)
       sendMessage(`${activityOfJa}`)
     }
   }
