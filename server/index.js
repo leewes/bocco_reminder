@@ -111,7 +111,7 @@ async function sendMessage(message) {
   );
 }
 
-app.post("/api/hook", (req, res) => {
+app.post("/api/hook", (req, res, next) => {
   if (req.body.data.message) {
     const message = req.body.data.message.message.ja;
     const type = req.body.data.message.media;
@@ -129,10 +129,16 @@ app.post("/api/hook", (req, res) => {
       } else {
         sendMessage("ゆっくり休んでね");
       }
-      // sendMessage(`${timestamp}時です`);
     }
+    res.status(200);
   }
+  next()
 });
+
+app.post("/api/hook", async (req, res) => {
+const boredContent = await axios.get("http://www.boredapi.com/api/activity?price=0.0");
+console.log(boredContent)
+})
 
 
 app.listen(PORT, () => {
