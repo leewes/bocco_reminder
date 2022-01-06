@@ -171,13 +171,11 @@ app.post("/api/hook", async (req, res) => {
 
     if (type === "audio" && message.includes("アドバイス")) {
       const adviceContent = await axios.get("https://api.adviceslip.com/advice");
-      const advice = adviceContent;
-      console.log(advice)
-
-      
-      // const activityOfJa = await translate(`Let's ${activity}`, {to: 'ja'})
-      // console.log(activity)
-      // sendMessage(`${activityOfJa}`)
+      const advice = adviceContent.data.slip.advice;
+      console.log(advice)      
+      const adviceOfJa = await translate(advice, {to: 'ja'})
+      console.log(adviceOfJa)
+      sendMessage(`${adviceOfJa}`)
     }
   }
   res.status(200);
