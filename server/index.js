@@ -120,7 +120,8 @@ app.post("/api/hook", (req, res) => {
       message.includes("宿題") &&
       message.includes("終わった")
     ) {
-      sendMessage("お疲れ様！");
+      console.log("req body timestamp", req.body.data.timestamp)
+      sendMessage(`${req.body.data.timestamp}`);
     }
   }
 });
