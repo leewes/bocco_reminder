@@ -130,16 +130,23 @@ app.post("/api/hook", (req, res, next) => {
         sendMessage("ゆっくり休んでね");
       }
     }
-    res.status(200);
   }
   next()
+  res.status(200);
 });
 
 app.post("/api/hook", async (req, res) => {
-const boredContent = await axios.get("http://www.boredapi.com/api/activity?price=0.0");
-const activity = boredContent.data.activity
-console.log(activity)
-sendMessage(`${activity}`)
+  if (req.body.data.message) {
+    if (
+      type === "audio" &&
+      message.includes("つまらない") || message.includes("暇") ||  message.includes("退屈")
+    ) {
+      const boredContent = await axios.get("http://www.boredapi.com/api/activity?price=0.0");
+      const activity = boredContent.data.activity
+      console.log(activity)
+      sendMessage(`${activity}`)
+    }
+  }
 })
 
 
