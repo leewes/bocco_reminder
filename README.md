@@ -25,8 +25,6 @@
   </p>
 </div>
 
-
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -52,46 +50,46 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
+
+[The demo can be viewed here.](https://youtu.be/kBLJZQpu1qM?t=2521 "YouTube link")
 
 <img src="./images/bocco.jpg" alt="BOCCO">
 
-An application to allow BOCCO emo to respond to custom voice commands. 
+An application to allow BOCCO emo to respond to custom voice commands.
 
 _This was developed during our time as students at Code Chrysalis_
 
-
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 ### Built With
 
-* [Express](https://expressjs.com/)
-* [Axios](https://axios-http.com/)
-* [translate-google](https://github.com/shikar/NODE_GOOGLE_TRANSLATE)
-* [Heroku](https://heroku.com)
+- [Express](https://expressjs.com/)
+- [Axios](https://axios-http.com/)
+- [translate-google](https://github.com/shikar/NODE_GOOGLE_TRANSLATE)
+- [Heroku](https://heroku.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 To get a copy of the project up and running follow these steps.
 
 <!--PREREQUISITES-->
+
 ### Prerequisites
- 1. Register an account through the [BOCCO App](https://apps.apple.com/jp/app/bocco-emo/id1545221442)
- 2. Connect BOCCO emo to your account and room **_refer to User Manual_
- 3. Login to the [management portal](https://platform-api.bocco.me/dashboard/login) and retrieve your REFRESH_TOKEN
- 4. Deploy to an [application platform service](https://www.heroku.com)
- 
+
+1.  Register an account through the [BOCCO App](https://apps.apple.com/jp/app/bocco-emo/id1545221442)
+2.  Connect BOCCO emo to your account and room \*\*_refer to User Manual_
+3.  Login to the [management portal](https://platform-api.bocco.me/dashboard/login) and retrieve your REFRESH_TOKEN
+4.  Deploy to an [application platform service](https://www.heroku.com)
+
 <!-- INSTALLATION -->
+
 ### Installation
 
 1. Clone the repo
@@ -105,11 +103,12 @@ To get a copy of the project up and running follow these steps.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- DEPLOYMENT -->
+
 ### Deployment
+
 When deploying to Heroku the following environmental variables must be set.
+
 ```sh
 URL = https://{HEROKU_APP_NAME}.herokuapp.com/api/hook
 REFRESH_TOKEN = {BOCCO_ACCOUNT_REFRESH_TOKEN}
@@ -117,22 +116,22 @@ REFRESH_TOKEN = {BOCCO_ACCOUNT_REFRESH_TOKEN}
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
 <!--- USAGE -->
+
 ### Usage
+
 This application primarily utilizes the recording function of BOCCO emo and responds with [messages](https://platform-api.bocco.me/api-docs/#post-/v1/rooms/-room_uuid-/messages/text) using [webhooks](https://platform-api.bocco.me/api-docs/#put-/v1/webhook/events).
 
 Currently the application supports the following speech commands through BOCCO emo recordings:
+
 1. 宿題が終わった？ with a response dependent on the time
 2. 退屈、つまらない、つまんない、暇 with a suggested activity
 3. アドバイス with a random piece of advice
 
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Any contributions you make are **greatly appreciated**.
@@ -148,8 +147,8 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
 <!-- AUTHORS -->
+
 ## Authors
 
 - **Wesley Lee** - _Tech Lead_ - [leewes5928](https://github.com/leewes5928)
@@ -160,19 +159,17 @@ Project Link: [https://github.com/leewes5928/bocco_reminder](https://github.com/
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- ACKNOWLEDGMENTS -->
+
 ## Acknowledgments
 
-* [BOCCO emo Platform API](https://platform-api.bocco.me/)
-* [Bored API](http://www.boredapi.com/)
-* [Advice Slip JSON API](https://api.adviceslip.com/)
-* [Translate Google](https://github.com/shikar/NODE_GOOGLE_TRANSLATE/)
-* [Best-README-Template](https://github.com/othneildrew/Best-README-Template/)
+- [BOCCO emo Platform API](https://platform-api.bocco.me/)
+- [Bored API](http://www.boredapi.com/)
+- [Advice Slip JSON API](https://api.adviceslip.com/)
+- [Translate Google](https://github.com/shikar/NODE_GOOGLE_TRANSLATE/)
+- [Best-README-Template](https://github.com/othneildrew/Best-README-Template/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 [contributors-shield]: https://img.shields.io/github/contributors/leewes5928/bocco_reminder.svg?style=for-the-badge
 [contributors-url]: https://github.com/leewes5928/bocco_reminder/graphs/contributors
